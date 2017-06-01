@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#aa808080"
+    tools:context="jobmanege.you.co.jp.jobmanageapp.activity.ConfigActivity">
+
+    <GridLayout
+        android:id="@+id/notice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:columnCount="2"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+
+        <TextView
+            android:id="@+id/notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:ems="10"
+            android:text="@string/config_notice"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/sub_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="center_vertical"
+            android:layout_row="1"
+            android:ems="10"
+            android:text="@string/config_sub_notice"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/notice_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:paddingRight="18dp"
+            android:layout_column="1"
+            android:layout_gravity="right"
+            android:layout_row="0"
+            android:layout_rowSpan="2" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/time_layout"
+        android:layout_below="@+id/notice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:columnCount="2"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/starttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:ems="10"
+            android:text="@string/config_starttime" />
+
+        <TextView
+            android:id="@+id/sub_starttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:ems="10"
+            android:textSize="18sp"
+            android:text="@string/config_sub_starttime" />
+
+        <Switch
+            android:id="@+id/starttime_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:paddingRight="18dp"
+            android:layout_column="1"
+            android:layout_gravity="right"
+            android:layout_row="0"
+            android:layout_rowSpan="2" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_columnSpan="2"/>
+
+        <TextView
+            android:id="@+id/endtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:layout_column="0"
+            android:layout_row="3"
+            android:ems="10"
+            android:text="@string/config_endtime" />
+
+        <TextView
+            android:id="@+id/sub_endtime"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="4"
+            android:ems="10"
+            android:textSize="18sp"
+            android:text="@string/config_sub_endtime" />
+
+        <Switch
+            android:id="@+id/endtime_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:paddingRight="18dp"
+            android:layout_gravity="right"
+            android:layout_column="1"
+            android:layout_row="3"
+            android:layout_rowSpan="2" />
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_below="@id/time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_register" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_cancel" />
+    </LinearLayout>
+
+</RelativeLayout>
