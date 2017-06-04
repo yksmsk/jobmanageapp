@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">TimeC@rd</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="menu_item_config">Config</string>
     <string name="btn_register">登録</string>
     <string name="btn_cancel">キャンセル</string>
@@ -14,6 +12,15 @@
     <string name="config_sub_notice">設定した時刻に通知を行います</string>
     <string name="config_starttime">始業時間設定</string>
     <string name="config_sub_starttime">始業の時間を設定します</string>
-    <string name="config_endtime">就業時間設定</string>
-    <string name="config_sub_endtime">就業の時間を設定します</string>
+    <string name="config_endtime">終業時間設定</string>
+    <string name="config_sub_endtime">終業の時間を設定します</string>
+    <string name="config_default_time">00：00</string>
+
+    <string name="footer_text">footer</string>
+
+    <string name="btn_now">なう</string>
+    <string name="dialog_starttime">始業時間</string>
+    <string name="dialog_endtime">終業時間</string>
+
+
 </resources>

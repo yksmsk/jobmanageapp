@@ -14,12 +14,13 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 
 import jobmanege.you.co.jp.jobmanageapp.R;
+import jobmanege.you.co.jp.jobmanageapp.dialog.InputDialog;
 
 public class CalendarFragment extends Fragment implements DatePicker.OnDateChangedListener {
     /** ログ出力用タグ */
     private static final String TAG = "CalendarFragment";
 
-//    private DialogFragment dialog;
+    private InputDialog dialog;
     private DatePicker datePicker;
 
 
@@ -46,6 +47,8 @@ public class CalendarFragment extends Fragment implements DatePicker.OnDateChang
 
         datePicker = (DatePicker) v.findViewById(R.id.datePicker);
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), this);
+
+        dialog = InputDialog.newInstance(null);
 
         return v;
     }
@@ -81,7 +84,7 @@ public class CalendarFragment extends Fragment implements DatePicker.OnDateChang
         int id = v.getId();
         switch (id) {
             case R.id.datePicker:
-//                dialog.show(getFragmentManager(), "test");
+                dialog.show(getActivity().getFragmentManager(), "test");
                 Log.d(TAG,"%% onDateChanged datePicker");
                 Log.d(TAG, String.format("Y:%4s M:%2s D:%2s", year, monthOfYear+1, dayOfMonth));
                 break;

@@ -1,8 +1,12 @@
-package jobmanege.you.co.jp.jobmanageapp.fragment;
+package jobmanege.you.co.jp.jobmanageapp.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+
+import jobmanege.you.co.jp.jobmanageapp.fragment.CalendarFragment;
+import jobmanege.you.co.jp.jobmanageapp.fragment.ListViewFragment;
 
 
 public class AppFragmentStatePageAdapter extends FragmentStatePagerAdapter {
@@ -39,5 +43,9 @@ public class AppFragmentStatePageAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position){
         return "" + position;
+    }
+
+    public Fragment findFragmentByPosition(ViewPager viewPager, int position) {
+        return (Fragment) instantiateItem(viewPager, position);
     }
 }

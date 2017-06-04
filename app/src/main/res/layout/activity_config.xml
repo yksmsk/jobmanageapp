@@ -85,14 +85,18 @@
             android:textSize="18sp"
             android:text="@string/config_sub_starttime" />
 
-        <Switch
-            android:id="@+id/starttime_switch"
+        <TextView
+            android:id="@+id/starttime_text"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:minHeight="100dp"
             android:paddingRight="18dp"
+            android:textSize="18sp"
             android:layout_column="1"
             android:layout_gravity="right"
+            android:text="@string/config_default_time"
             android:layout_row="0"
             android:layout_rowSpan="2" />
 
@@ -125,13 +129,17 @@
             android:textSize="18sp"
             android:text="@string/config_sub_endtime" />
 
-        <Switch
-            android:id="@+id/endtime_switch"
+        <TextView
+            android:id="@+id/endtime_text"
+            android:gravity="center"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:minHeight="100dp"
             android:paddingRight="18dp"
             android:layout_gravity="right"
+            android:text="@string/config_default_time"
             android:layout_column="1"
             android:layout_row="3"
             android:layout_rowSpan="2" />
