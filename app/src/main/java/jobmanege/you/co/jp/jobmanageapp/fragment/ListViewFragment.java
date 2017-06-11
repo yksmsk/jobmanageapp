@@ -132,11 +132,12 @@ public class ListViewFragment extends Fragment implements AdapterView.OnItemSele
 
     }
 
-    public void viewUpdate(int calYear, int calMonth) {
+    public void updateView(int calYear, int calMonth) {
         Log.d(TAG, "%% calYear:" + calYear + "calMonth:" + calMonth);
         monthSpinner.setSelection(calMonth);
         // SrolleViewに要素を追加する
 
 
     }
+
 }

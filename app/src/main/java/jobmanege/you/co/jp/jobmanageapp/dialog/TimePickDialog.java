@@ -4,17 +4,22 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
+import jobmanege.you.co.jp.jobmanageapp.R;
 import jobmanege.you.co.jp.jobmanageapp.activity.ConfigActivity;
+import jobmanege.you.co.jp.jobmanageapp.common.Constant;
 
 /**
- * Created by you on 2017/06/02.
+ * TimePickerDialog定義クラス
  */
 
 public class TimePickDialog extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+    /** ログ出力用タグ */
+    private static final String TAG = "TimePickDialog";
 
     /**
      * Called when the user is done setting a new time and the dialog has
@@ -34,7 +39,20 @@ public class TimePickDialog extends DialogFragment implements TimePickerDialog.O
         Calendar cal = Calendar.getInstance();
         int h = cal.get(Calendar.HOUR_OF_DAY);
         int m = cal.get(Calendar.MINUTE);
+        int targetId = getArguments().getInt(Constant.KEY_BUNDLE_TARGET_ID);
 
-        return new TimePickerDialog(getActivity(), (ConfigActivity)getActivity(), h, m, true);
+        switch(targetId){
+            case R.id.starttime_text:
+            case R.id.endtime_text:
+                Log.d(TAG, "config");
+                return new TimePickerDialog(getActivity(), (ConfigActivity)getActivity(), h, m, true);
+            case R.id.dialog_starttime1:
+            case R.id.dialog_endtime1:
+            case R.id.dialog_starttime2:
+            case R.id.dialog_endtime2:
+                Log.d(TAG, "dialog");
+                return new TimePickerDialog(getActivity(), (InputDialog) getTargetFragment(), h, m, true);
+        }
+        return null;
     }
 }

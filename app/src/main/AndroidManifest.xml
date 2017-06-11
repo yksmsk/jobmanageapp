@@ -3,19 +3,12 @@
     package="jobmanege.you.co.jp.jobmanageapp">
 
     <application
-        android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true">
-        <meta-data
-            android:name="AA_DB_NAME"
-            android:value="jobmanageapp.db" />
-        <meta-data
-            android:name="AA_DB_VERSION"
-            android:value="1" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

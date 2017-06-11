@@ -14,15 +14,19 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 
 import jobmanege.you.co.jp.jobmanageapp.R;
+import jobmanege.you.co.jp.jobmanageapp.common.Constant;
 import jobmanege.you.co.jp.jobmanageapp.dialog.InputDialog;
 
 public class CalendarFragment extends Fragment implements DatePicker.OnDateChangedListener {
-    /** ログ出力用タグ */
+    /**
+     * ログ出力用タグ
+     */
     private static final String TAG = "CalendarFragment";
 
     private InputDialog dialog;
     private DatePicker datePicker;
 
+    private boolean touchFlg = false;
 
     public static CalendarFragment newInstance() {
         CalendarFragment fragment = new CalendarFragment();
@@ -30,6 +34,15 @@ public class CalendarFragment extends Fragment implements DatePicker.OnDateChang
 
         fragment.setArguments(args);
         return fragment;
+    }
+
+    /**
+     * タッチフラグを設定する.
+     *
+     * @param touchFlg
+     */
+    public void setTouchFlg(boolean touchFlg) {
+        this.touchFlg = touchFlg;
     }
 
     @Override
@@ -49,7 +62,6 @@ public class CalendarFragment extends Fragment implements DatePicker.OnDateChang
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), this);
 
         dialog = InputDialog.newInstance(null);
-
         return v;
     }
 
@@ -73,7 +85,7 @@ public class CalendarFragment extends Fragment implements DatePicker.OnDateChang
     /**
      * Called upon a date change.
      *
-     * @param v        The view associated with this listener.
+     * @param v           The view associated with this listener.
      * @param year        The year that was set.
      * @param monthOfYear The month that was set (0-11) for compatibility
      *                    with {@link Calendar}.
@@ -84,9 +96,14 @@ public class CalendarFragment extends Fragment implements DatePicker.OnDateChang
         int id = v.getId();
         switch (id) {
             case R.id.datePicker:
+                // InputDialogに対象の日付を渡す
+                Bundle args = new Bundle();
+                args.putInt(Constant.KEY_BUNDLE_TARGET_YEAR, year);
+                args.putInt(Constant.KEY_BUNDLE_TARGET_MONTH, monthOfYear);
+                args.putInt(Constant.KEY_BUNDLE_TARGET_DAY, dayOfMonth);
+                dialog.setArguments(args);
                 dialog.show(getActivity().getFragmentManager(), "test");
-                Log.d(TAG,"%% onDateChanged datePicker");
-                Log.d(TAG, String.format("Y:%4s M:%2s D:%2s", year, monthOfYear+1, dayOfMonth));
+//                touchFlg = false;
                 break;
         }
 

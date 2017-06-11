@@ -88,7 +88,6 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     @Override
     public void onPageScrollStateChanged(int state) {
 
-
         switch (state) {
             case ViewPager.SCROLL_STATE_IDLE:
                 Log.d(TAG, "%% onPageScrollStateChanged IDLE:");
@@ -104,13 +103,18 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
 
     }
 
+    /**
+     * 日付が更新されたときの処理.
+     */
     private void updateDate() {
+        // pageAdapter取得
         AppFragmentStatePageAdapter adapter = (AppFragmentStatePageAdapter) viewPager.getAdapter();
+        // Adapterから各Fragmentを取得
         CalendarFragment calFragment = (CalendarFragment) adapter.findFragmentByPosition(viewPager, 0);
         ListViewFragment listViewFragment = (ListViewFragment) adapter.findFragmentByPosition(viewPager, 1);
-
+        // calendarを取得
         DatePicker datePicker = (DatePicker) calFragment.getActivity().findViewById(R.id.datePicker);
-
-        listViewFragment.viewUpdate(datePicker.getYear(), datePicker.getMonth());
+        // calendarから取得した日付でViewを再描画
+        listViewFragment.updateView(datePicker.getYear(), datePicker.getMonth());
     }
 }

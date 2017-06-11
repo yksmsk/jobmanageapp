@@ -1,7 +1,6 @@
 package jobmanege.you.co.jp.jobmanageapp.activity;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,7 +15,7 @@ import android.widget.TimePicker;
 
 import jobmanege.you.co.jp.jobmanageapp.R;
 import jobmanege.you.co.jp.jobmanageapp.common.Constant;
-import jobmanege.you.co.jp.jobmanageapp.dialog.TimePickDialog;
+import jobmanege.you.co.jp.jobmanageapp.common.Utils;
 
 public class ConfigActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, TimePickerDialog.OnTimeSetListener {
 
@@ -93,8 +92,8 @@ public class ConfigActivity extends Activity implements View.OnClickListener, Co
                 break;
            case R.id.starttime_text:
            case R.id.endtime_text:
-               targetViewId = v.getId();
-               showTimePickerDialog(v);
+               targetViewId = id;
+               Utils.showTimePickerDialog(getFragmentManager(), v);
                break;
         }
     }
@@ -166,12 +165,5 @@ public class ConfigActivity extends Activity implements View.OnClickListener, Co
                 break;
 
         }
-    }
-
-    private void showTimePickerDialog(View v) {
-        Log.d(TAG, "%% showTimePickerDialog");
-        DialogFragment timePickDialog = new TimePickDialog();
-        timePickDialog.show(getFragmentManager(), "timePicker");
-
     }
 }
