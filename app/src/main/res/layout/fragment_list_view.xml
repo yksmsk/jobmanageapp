@@ -1,81 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_view_body"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#aa808080"
+    android:orientation="vertical"
     tools:context="jobmanege.you.co.jp.jobmanageapp.fragment.ListViewFragment">
 
-    <RelativeLayout
-        android:id="@+id/list_view_layout"
-        android:layout_width="395dp"
-        android:layout_height="587dp"
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
         <LinearLayout
-            android:id="@+id/header"
-            android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2" />
+
+            <TextView
+                android:id="@+id/spnner_year_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:gravity="center"
+                android:text="@string/header_year"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3" />
+
+            <TextView
+                android:id="@+id/spnner_month_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:gravity="center"
+                android:text="@string/header_month"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/listTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="5"
-                android:textSize="18sp"
                 android:gravity="left"
                 android:inputType="text"
-                android:text="の稼働時間" />
+                android:text="の稼働時間"
+                android:textSize="18sp" />
+
         </LinearLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/footer"
-            android:layout_below="@+id/header">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
 
         <LinearLayout
-            android:id="@+id/footer"
-            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="fill_horizontal"
+            android:layout_margin="0dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/header_day_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_margin="0dp"
+                android:background="@drawable/header_text_style"
+                android:ems="2"
+                android:gravity="center"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:maxWidth="2sp"
+                android:text="@string/header_day" />
+
+            <TextView
+                android:id="@+id/header_week_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginLeft="-1.0dp"
+
+
+                android:background="@drawable/header_text_style"
+                android:ems="2"
+                android:gravity="center"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:maxWidth="2sp"
+                android:text="@string/header_week" />
+
+            <TextView
+                android:id="@+id/header_site_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginLeft="-1.0dp"
+                android:layout_weight="1"
+                android:background="@drawable/header_site_style"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/header_site" />
+
+            <TextView
+                android:id="@+id/header_office_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginLeft="-1.0dp"
+                android:layout_weight="1"
+                android:background="@drawable/header_office_style"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/header_office" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/scroll_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
 
-            <EditText
-                android:id="@+id/footerText"
-                android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:baselineAligned="false"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/total_text"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@color/colorAccent"
-                android:ems="10"
-                android:inputType="text"
-                android:text="@string/footer_text" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:ems="4"
+                android:gravity="center"
+                android:text="@string/footer_total_label" />
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/site_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/office_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <Space
+            android:id="@+id/footer_space"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>
+

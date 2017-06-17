@@ -3,8 +3,12 @@ package jobmanege.you.co.jp.jobmanageapp.common;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+
+import java.util.Calendar;
 
 import jobmanege.you.co.jp.jobmanageapp.dialog.TimePickDialog;
 
@@ -100,5 +104,40 @@ public class Utils {
         }
 
         return String.format(Constant.FORMAT_TIME_VIEW, roundH, roundM);
+    }
+
+    public static String getDayOfTheWeek(int dayOfWeek) {
+        switch (dayOfWeek) {
+            case Calendar.SUNDAY: return "日";
+            case Calendar.MONDAY: return "月";
+            case Calendar.TUESDAY: return "火";
+            case Calendar.WEDNESDAY: return "水";
+            case Calendar.THURSDAY: return "木";
+            case Calendar.FRIDAY: return "金";
+            case Calendar.SATURDAY: return "土";
+        }
+        throw new IllegalStateException();
+    }
+
+    /**
+     * pixelからdpへの変換
+     * @param px
+     * @param context
+     * @return float dp
+     */
+    public static float px2dp(int px, Context context){
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return px / metrics.density;
+    }
+
+    /**
+     * dpからpixelへの変換
+     * @param dp
+     * @param context
+     * @return float pixel
+     */
+    public static float dp2px(float dp, Context context){
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return dp * metrics.density;
     }
 }

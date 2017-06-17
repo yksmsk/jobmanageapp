@@ -21,11 +21,8 @@ public class Constant {
     public final static String FORMAT_TIME_VIEW = "%02d：%02d";
     public final static String SEPARATOR_TIME_VIEW = "：";
 
-    public final static String FORMAT_DATE_DATA = "%d/%02d/%02d";
-
+    public final static String DB_NAME = "JobData.db";
     public final static String DB_TIMEDATA_WORKTYPE_SITE = "1";
     public final static String DB_TIMEDATA_WORKTYPE_OFFICE = "2";
-
-
 
 }

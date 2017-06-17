@@ -16,11 +16,23 @@
     <string name="config_sub_endtime">終業の時間を設定します</string>
     <string name="config_default_time">00：00</string>
 
+    <string name="header_year">年</string>
+    <string name="header_month">月</string>
+    <string name="header_day">日</string>
+    <string name="header_week">曜日</string>
+    <string name="header_site">現場稼働</string>
+    <string name="header_office">自社稼働</string>
     <string name="footer_text">footer</string>
+    <string name="footer_total_label">合計</string>
 
     <string name="btn_now">なう</string>
     <string name="dialog_starttime">始業時間</string>
     <string name="dialog_endtime">終業時間</string>
 
+    <string name="scroll_list_item_day">%02d</string>
+    <string name="scroll_list_item_week">(%s)</string>
+    <string name="scroll_list_item_separator">-</string>
+
+    <string name="appbar_scrolling_view_behavior"></string>
 
 </resources>

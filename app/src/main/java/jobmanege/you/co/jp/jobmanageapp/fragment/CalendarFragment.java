@@ -96,16 +96,27 @@ public class CalendarFragment extends Fragment implements DatePicker.OnDateChang
         int id = v.getId();
         switch (id) {
             case R.id.datePicker:
-                // InputDialogに対象の日付を渡す
-                Bundle args = new Bundle();
-                args.putInt(Constant.KEY_BUNDLE_TARGET_YEAR, year);
-                args.putInt(Constant.KEY_BUNDLE_TARGET_MONTH, monthOfYear);
-                args.putInt(Constant.KEY_BUNDLE_TARGET_DAY, dayOfMonth);
-                dialog.setArguments(args);
-                dialog.show(getActivity().getFragmentManager(), "test");
-//                touchFlg = false;
+                startInputDialog(year, monthOfYear, dayOfMonth);
                 break;
         }
+
+    }
+
+    /**
+     * InputDialog起動処理
+     *
+     * @param year        年
+     * @param monthOfYear 月
+     * @param dayOfMonth  日
+     */
+    private void startInputDialog(int year, int monthOfYear, int dayOfMonth) {
+        // InputDialogに対象の日付を渡す
+        Bundle args = new Bundle();
+        args.putInt(Constant.KEY_BUNDLE_TARGET_YEAR, year);
+        args.putInt(Constant.KEY_BUNDLE_TARGET_MONTH, monthOfYear);
+        args.putInt(Constant.KEY_BUNDLE_TARGET_DAY, dayOfMonth);
+        dialog.setArguments(args);
+        dialog.show(getActivity().getFragmentManager(), "test");
 
     }
 }

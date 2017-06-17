@@ -45,7 +45,6 @@ public class InputDialog extends DialogFragment implements View.OnClickListener,
     private int targetYear;
     private int targetMonth;
     private int targetDay;
-    private String targetDate;
     private int targetViewId;
 
     private OrmaDatabase db;
@@ -73,21 +72,21 @@ public class InputDialog extends DialogFragment implements View.OnClickListener,
         targetYear = args.getInt(Constant.KEY_BUNDLE_TARGET_YEAR);
         targetMonth = args.getInt(Constant.KEY_BUNDLE_TARGET_MONTH);
         targetDay = args.getInt(Constant.KEY_BUNDLE_TARGET_DAY);
-        targetDate = String.format(Constant.FORMAT_DATE_DATA, targetYear, targetMonth, targetDay);
 
-        // DBに問い合わせ
-        db = AppDatabase.createOrmaInstance(getContext(), "JobData.db");
-        TimeData_Selector selector = db.selectFromTimeData().dateEq(targetDate);
+        // TODO DBに問い合わせ Backgraundの方がいいかも ***********************************************
+        db = AppDatabase.createOrmaInstance(getContext(), Constant.DB_NAME);
+        TimeData_Selector selector = db.selectFromTimeData().yearEq(targetYear).monthEq(targetMonth).dayEq(targetDay);
         List<TimeData> dataList = selector.toList();
         Log.d(TAG, "%% list size " + dataList.size());
 
         for (TimeData data : dataList) {
-            if (data.workType == Constant.DB_TIMEDATA_WORKTYPE_SITE) {
+            if (Constant.DB_TIMEDATA_WORKTYPE_SITE.equals(data.workType)) {
                 siteData = data;
-            } else if (data.workType == Constant.DB_TIMEDATA_WORKTYPE_OFFICE) {
+            } else if (Constant.DB_TIMEDATA_WORKTYPE_OFFICE.equals(data.workType)) {
                 officeData = data;
             }
         }
+        // ****************************************************************************************
 
         // Viewの設定
         LayoutInflater i = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -248,12 +247,16 @@ public class InputDialog extends DialogFragment implements View.OnClickListener,
                     .execute();
         } else {
             siteData.workType = Constant.DB_TIMEDATA_WORKTYPE_SITE;
-            siteData.date = targetDate;
+            siteData.year = targetYear;
+            siteData.month = targetMonth;
+            siteData.day = targetDay;
             siteData.startTime = startTimeText1.getText().toString();
             siteData.endTime = endTimeText1.getText().toString();
 
             officeData.workType = Constant.DB_TIMEDATA_WORKTYPE_OFFICE;
-            officeData.date = targetDate;
+            officeData.year = targetYear;
+            officeData.month = targetMonth;
+            officeData.day = targetDay;
             officeData.startTime = startTimeText2.getText().toString();
             officeData.endTime = endTimeText2.getText().toString();
 

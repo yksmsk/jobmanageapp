@@ -22,7 +22,13 @@ public class TimeData {
     public String workType;
 
     @Column(indexed = true)
-    public String date;
+    public int year;
+
+    @Column(indexed = true)
+    public int month;
+
+    @Column(indexed = true)
+    public int day;
 
     @Column
     public String startTime;
@@ -31,16 +37,13 @@ public class TimeData {
     public String endTime;
 
     @Setter
-    public TimeData(long id, String workType, String date, String startTime, String endTime) {
+    public TimeData(long id, String workType, int year, int month, int day, String startTime, String endTime) {
         this.id = id;
         this.workType = workType;
-        this.date = date;
+        this.year = year;
+        this.month = month;
+        this.day = day;
         this.startTime = startTime;
         this.endTime = endTime;
     }
-
-    public static TimeData_Relation relation(OrmaDatabase db){
-        return db.relationOfTimeData().orderByIdAsc();
-    }
-
 }
